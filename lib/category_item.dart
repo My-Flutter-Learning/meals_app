@@ -13,7 +13,7 @@ class CategoryItem extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Text(
             title,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
