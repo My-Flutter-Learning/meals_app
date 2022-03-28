@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/widgets/meal_item.dart';
 
 import '../dummy_data.dart';
 
@@ -22,7 +23,13 @@ class CategoryMealsScreen extends StatelessWidget {
             AppBar(title: Text(categoryTitle), backgroundColor: categoryColor),
         body: ListView.builder(
           itemBuilder: (context, index) {
-            return Text(categoryMeals[index].title!);
+            return MealItem(
+                title: categoryMeals[index].title,
+                imageUrl: categoryMeals[index].imageUrl,
+                duration: categoryMeals[index].duration,
+                complexity: categoryMeals[index].complexity,
+                affordability: categoryMeals[index].affordability
+            );
           },
           itemCount: categoryMeals.length,
         ));
