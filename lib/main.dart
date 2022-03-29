@@ -36,8 +36,11 @@ class MyApp extends StatelessWidget {
       routes:  {
         CategoryMealsScreen.routeName : (context) => const CategoryMealsScreen(),
         MealDetailScreen.routeName :(context) => const MealDetailScreen()
-      }
+      },
+      // This is used as a last resort i.e as a fallback page.
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder:((context) => const CategoriesScreen()));
+      },
     );
   }
-}
- 
+} 
