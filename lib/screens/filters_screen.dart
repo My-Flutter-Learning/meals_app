@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/widgets/main_drawer.dart';
 
 class FilterScreen extends StatelessWidget {
   static const routeName = '/filterscreen';
@@ -6,6 +7,9 @@ class FilterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Filters')));
+    return  Scaffold(
+        appBar: AppBar(title: const Text('Filters')),
+        drawer: const MainDrawer(),
+        body: const Center(child: Text('Filters')));
   }
 }
