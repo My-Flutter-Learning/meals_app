@@ -3,8 +3,10 @@ import 'package:meals_app/dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/mealdetails';
+  final Function toggleFavourites;
+  final Function isFavourite;
 
-  const MealDetailScreen({Key? key}) : super(key: key);
+  const MealDetailScreen(this.toggleFavourites, this.isFavourite, {Key? key}) : super(key: key);
 
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
@@ -18,15 +20,14 @@ class MealDetailScreen extends StatelessWidget {
 
   Widget buildContainer(Widget child) {
     return Container(
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10)),
-      height: 150,
-      width: 300,
-      margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.all(10),
-      child: child
-    );
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(10)),
+        height: 150,
+        width: 300,
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+        child: child);
   }
 
   @override
@@ -65,26 +66,25 @@ class MealDetailScreen extends StatelessWidget {
               ),
               buildSectionTitle(context, 'Steps'),
               buildContainer(ListView.builder(
-                  itemBuilder: (
-                      (context, index) => Column(
-                        children: [
-                          ListTile(
-                              leading: CircleAvatar(
-                                  child: Text('#${index +1}'),
-                                ),
-                              title: Text(selectedMeal.steps![index]),
-                              ),
-                          const Divider(),
-                        ],
-                      )
-                    ),
-                  itemCount: selectedMeal.steps!.length,))
+                itemBuilder: ((context, index) => Column(
+                      children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            child: Text('#${index + 1}'),
+                          ),
+                          title: Text(selectedMeal.steps![index]),
+                        ),
+                        const Divider(),
+                      ],
+                    )),
+                itemCount: selectedMeal.steps!.length,
+              ))
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: (() => Navigator.of(context).pop(mealId)),
-          child: const Icon(Icons.delete),)
-      );
+          onPressed: () => toggleFavourites(mealId),
+          child: Icon(isFavourite(mealId)? Icons.star : Icons.star_border),
+        ));
   }
 }
