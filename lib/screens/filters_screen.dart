@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/main_drawer.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class FilterScreen extends StatefulWidget {
   static const routeName = '/filterscreen';
@@ -53,7 +54,9 @@ class _FilterScreenState extends State<FilterScreen> {
                 'Adjust your meal selection',
                 style: Theme.of(context).textTheme.titleMedium,
               )),
-          Expanded(
+          SizedBox(
+            height: 300,
+            width: double.infinity,
             child: ListView(children: [
               SwitchListTile(
                   value: _glutenFree,
@@ -93,6 +96,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   subtitle: const Text('Only include lactose-free meals')),
             ]),
           ),
+          const SizedBox(height: 20,),
           ElevatedButton(
               child: const Text('Save'),
               onPressed: () {
@@ -103,8 +107,13 @@ class _FilterScreenState extends State<FilterScreen> {
                   'lactose': _lactoseFree,
                 };
                 widget.saveFilters(selectedFilters);
-              }
-            ),
+                const  snackBar = SnackBar(
+                  content: Text('Saved!', textAlign: TextAlign.center, style: TextStyle(fontSize: 15),),
+                  duration: Duration(seconds: 1),
+                  backgroundColor: Colors.pinkAccent,
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }),
         ],
       ),
     );
