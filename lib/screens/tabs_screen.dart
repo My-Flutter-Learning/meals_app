@@ -20,7 +20,7 @@ class _TabsScreenState extends State<TabsScreen> {
 
     _pages = [
       {'page': const CategoriesScreen(), 'title': 'Categories'},
-      {'page': FavouritesScreen(widget.favouriteMeals), 'title': 'Your Favourite'}
+      {'page': FavouritesScreen(widget.favouriteMeals), 'title': 'Favourites'}
     ];
 
     super.initState();
@@ -38,7 +38,21 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
-          AppBar(title: Text(_pages[_selectedPageIndex]['title'] as String)),
+          AppBar(backgroundColor: Colors.white,
+            title: Center(
+                child: Text(
+                    _pages[_selectedPageIndex]['title'] as String,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ),
+            iconTheme: const IconThemeData(
+                color: Colors.black
+              ),
+            elevation: 0,
+          ),
       drawer: const MainDrawer(),
       body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(

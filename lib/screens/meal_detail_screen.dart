@@ -39,7 +39,16 @@ class MealDetailScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(selectedMeal.title!),
+          backgroundColor: Colors.white,
+          title: Center(
+            child: Text(
+              selectedMeal.title!,
+              style:const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold),
+              ),
+          ),
+          iconTheme: const IconThemeData(color: Colors.black),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -48,9 +57,10 @@ class MealDetailScreen extends StatelessWidget {
                   height: 300,
                   width: double.infinity,
                   child: Image.network(
-                    selectedMeal.imageUrl!,
-                    fit: BoxFit.cover,
-                  )),
+                        selectedMeal.imageUrl!,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
               buildSectionTitle(context, 'Ingredients'),
               buildContainer(
                 ListView.builder(

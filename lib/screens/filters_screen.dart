@@ -20,14 +20,14 @@ class _FilterScreenState extends State<FilterScreen> {
   var _vegan = false;
   var _lactoseFree = false;
 
-  Widget _buildSwitchListTile(String title, String description,
-      bool currentValue, Function updateValue) {
-    return SwitchListTile(
-        value: currentValue,
-        onChanged: (_) => updateValue,
-        title: Text(title),
-        subtitle: Text(description));
-  }
+  // Widget _buildSwitchListTile(String title, String description,
+  //     bool currentValue, Function updateValue) {
+  //   return SwitchListTile(
+  //       value: currentValue,
+  //       onChanged: (_) => updateValue,
+  //       title: Text(title),
+  //       subtitle: Text(description));
+  // }
 
   @override
   void initState() {

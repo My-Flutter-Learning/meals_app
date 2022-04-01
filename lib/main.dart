@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   };
 
   List<Meals> _availableMeals = DUMMY_MEALS;
-  List<Meals> _favouriteMeals = [];
+  final List<Meals> _favouriteMeals = [];
 
   void _setFilters(Map<String, bool> filterData) {
     setState(() {

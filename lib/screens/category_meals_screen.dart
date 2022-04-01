@@ -38,16 +38,28 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
     super.didChangeDependencies();
   }
 
-  void _removeMeal(String mealId) {
-    setState(() {
-      displayedMeals.removeWhere((meal) => meal.id == mealId);
-    });
-  }
+  // void _removeMeal(String mealId) {
+  //   setState(() {
+  //     displayedMeals.removeWhere((meal) => meal.id == mealId);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(categoryTitle)),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Center(
+            child: Text(
+              categoryTitle,
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight:FontWeight.bold),
+              ),
+          ),
+          iconTheme: const IconThemeData(color: Colors.black),
+          elevation: 10,
+        ),
         body: ListView.builder(
           itemBuilder: (context, index) {
             return MealItem(
